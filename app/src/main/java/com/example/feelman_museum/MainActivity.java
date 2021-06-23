@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             fllipperImages(image);
         }
     }
+    //안녕하세요~
     public void fllipperImages(int image) {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(image);
