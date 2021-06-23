@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             fllipperImages(image);
         }
     }
-    //안녕하세요~~~
+
     public void fllipperImages(int image) {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(image);
@@ -34,9 +34,8 @@ public class MainActivity extends AppCompatActivity {
         v_fllipper.setFlipInterval(3000);       // 자동 이미지 슬라이드 딜레이시간(1000 당 1초)
         v_fllipper.setAutoStart(true);          // 자동 시작 유무 설정
 
-        // animation
-        v_fllipper.setInAnimation(this,android.R.anim.slide_in_left);
-        v_fllipper.setOutAnimation(this,android.R.anim.slide_out_right);
+        v_fllipper.setInAnimation(this,R.anim.slide_in_right);
+        v_fllipper.setOutAnimation(this,R.anim.slide_out_left);
     }
 
 }
