@@ -16,13 +16,12 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
             <ViewFlipper
                 android:id="@+id/image_slide"
                 android:layout_width="match_parent"
-                android:layout_height="597dp" />
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 
