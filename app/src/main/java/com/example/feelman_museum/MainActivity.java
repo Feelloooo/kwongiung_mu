@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setIcon(R.drawable.actionbar_logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
        // getHashKey();
 
         int images[] = {
@@ -41,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         for(int image : images) {
             fllipperImages(image);
         }
-        Button button1 = findViewById(R.id.menu5); //다른 버튼 사용할 때 변수명 바꿔서 사용
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button button = findViewById(R.id.menu5); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Activity_route.class);

@@ -9,7 +9,9 @@ import android.location.Address;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import net.daum.android.map.MapViewEventListener;
 import net.daum.mf.map.api.*;
@@ -24,6 +26,8 @@ public class Activity_route extends AppCompatActivity implements MapView.POIItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("오시는 길");
         MapView mapView = new MapView(this);
 
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
@@ -38,7 +42,49 @@ public class Activity_route extends AppCompatActivity implements MapView.POIItem
         mapView.addPOIItem(marker);
         mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(36.62775104579331, 127.45535206324857), 2, true);
         mapView.setPOIItemEventListener(this);
+
+        Button button1 = findViewById(R.id.direction_phone); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), Activity_route.class);
+//                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:"+"043-261-2902"));
+                startActivity(intent);
+            }
+        });
+
+        Button button2 = findViewById(R.id.direction_car); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "kakaomap://route?sp= &ep=36.62775104579331, 127.45535206324857&by=CAR";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+        Button button3 = findViewById(R.id.direction_bus); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "kakaomap://route?sp= &ep=36.62775104579331, 127.45535206324857&by=PUBLICTRANSIT";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+        Button button4 = findViewById(R.id.direction_walk); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "kakaomap://route?sp= &ep=36.62775104579331, 127.45535206324857&by=FOOT";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     @Override
     public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
@@ -61,4 +107,5 @@ public class Activity_route extends AppCompatActivity implements MapView.POIItem
     public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {
 
     }
+
 }

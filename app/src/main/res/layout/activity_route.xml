@@ -33,6 +33,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="4">
                 <Button
+                    android:id="@+id/direction_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="30dp"
@@ -63,6 +64,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="4">
                 <Button
+                    android:id="@+id/direction_car"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
@@ -93,6 +95,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="4">
                 <Button
+                    android:id="@+id/direction_bus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
@@ -123,6 +126,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="4">
                 <Button
+                    android:id="@+id/direction_walk"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="25dp"
