@@ -28,6 +28,7 @@ public class Activity_route extends AppCompatActivity implements MapView.POIItem
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("오시는 길");
+
         MapView mapView = new MapView(this);
 
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
