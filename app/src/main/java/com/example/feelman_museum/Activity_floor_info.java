@@ -18,6 +18,8 @@ public class Activity_floor_info extends AppCompatActivity {
     private WebView mWebView; // 웹뷰 선언
     private WebSettings mWebSettings; //웹뷰세팅
 
+    int frame_index=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,9 @@ public class Activity_floor_info extends AppCompatActivity {
             public void onClick(View view) {
                 setContentView(R.layout.webview);
                 mWebView = (WebView) findViewById(R.id.webView);
+
+                frame_index=1;
+
                 mWebView.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게
                 mWebSettings = mWebView.getSettings(); //세부 세팅 등록
                 mWebSettings.setJavaScriptEnabled(true); // 웹페이지 자바스클비트 허용 여부
@@ -55,6 +60,9 @@ public class Activity_floor_info extends AppCompatActivity {
             public void onClick(View view) {
                 setContentView(R.layout.webview);
                 mWebView = (WebView) findViewById(R.id.webView);
+
+                frame_index=1;
+
                 mWebView.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게
                 mWebSettings = mWebView.getSettings(); //세부 세팅 등록
                 mWebSettings.setJavaScriptEnabled(true); // 웹페이지 자바스클비트 허용 여부
@@ -73,19 +81,17 @@ public class Activity_floor_info extends AppCompatActivity {
             }
         });
     }
-    public class MainActivity extends AppCompatActivity {
-        @Override
-        public boolean onKeyDown(int keyCode, KeyEvent event) {
-            if (keyCode != KeyEvent.KEYCODE_BACK)
-                return super.onKeyDown(keyCode, event);
-
-            if (mWebView.canGoBack()) {
-                mWebView.goBack();
-                return true;
-            }
-
-            return super.onKeyDown(keyCode, event);
+    @Override
+    public void onBackPressed() {
+        //웹뷰에서 뒤로가기로 누르면 이전화면으로 이동
+        if(frame_index == 1){
+            setContentView(R.layout.activity_floor_info);
+            frame_index = 0;
+        }
+        //선택화면인 경우 main_activity로 이동
+        else{
+            super.onBackPressed();
         }
     }
-}
 
+}
