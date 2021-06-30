@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //테스트
+        Button button1 = findViewById(R.id.menu1); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Activity_heritage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void fllipperImages(int image) {
