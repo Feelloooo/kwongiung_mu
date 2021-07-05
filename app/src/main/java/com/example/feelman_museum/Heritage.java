@@ -1,7 +1,5 @@
 package com.example.feelman_museum;
 
-import java.util.Comparator;
-
 public class Heritage {
 
     public String name;  // 사용자 id
@@ -10,6 +8,10 @@ public class Heritage {
     public String era;
     public String place;
     public String detail;
+
+    public Heritage() {
+
+    }
 
 
     public String getName() {

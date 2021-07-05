@@ -1,6 +1,9 @@
 package com.example.feelman_museum;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,20 +12,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Frag_heritage1 extends Fragment {
     private View view;
     RecyclerView recyclerView;
     MyAdapter myAdapter;
 
-    public static Frag_heritage1 newInstance(){
+    SearchView searchView;
+
+    public static Frag_heritage1 newInstance() {
 
         Frag_heritage1 frag_heritage1 = new Frag_heritage1();
         return frag_heritage1;
@@ -37,6 +47,7 @@ public class Frag_heritage1 extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         myAdapter = new MyAdapter(getContext(), getMylist());
         recyclerView.setAdapter(myAdapter);
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -57,4 +68,31 @@ public class Frag_heritage1 extends Fragment {
         return heritage;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.menu, menu);
+
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getActivity().getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint("검색어를 입력하세요.");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                myAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                myAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
+    }
 }

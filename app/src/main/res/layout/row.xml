@@ -11,47 +11,43 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        >
+        android:layout_weight="2"
+        android:padding="16dp">
+
 
         <ImageView
             android:id="@+id/imageIV"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/ic_launcher_background"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/titleTv"
-            android:text="Title"
-            android:textSize="22sp"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/imageIV"
-            android:layout_toEndOf="@id/imageIV"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:id="@+id/descriptionTv"
-            android:textSize="15sp"
-            android:textColor="#a9a9a9"
-            android:layout_toRightOf="@id/imageIV"
-            android:layout_toEndOf="@id/imageIV"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_toEndOf="@id/imageIV"
+            android:layout_toRightOf="@id/imageIV"
+            android:text="Title"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descriptionTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleTv"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/titleTv"/>
-
-
-
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@id/imageIV"
+            android:layout_toRightOf="@id/imageIV"
+            android:text="Description"
+            android:textColor="#a9a9a9"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

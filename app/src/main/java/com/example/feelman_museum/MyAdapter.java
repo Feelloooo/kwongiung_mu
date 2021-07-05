@@ -7,6 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,14 +18,16 @@ import com.bumptech.glide.Glide;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filterable {
 
     Context c;
-    ArrayList<Heritage> heritage;
+    ArrayList<Heritage> heritage_fitered;
+    ArrayList<Heritage> heritage_unfitered;
 
     public MyAdapter(Context c, ArrayList<Heritage> heritage) {
         this.c = c;
-        this.heritage = heritage;
+        this.heritage_fitered = heritage;
+        this.heritage_unfitered = heritage;
     }
 
     @NonNull
@@ -36,9 +40,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
-        holder.mTitle.setText(heritage.get(position).getName());
-        holder.mDes.setText(heritage.get(position).getDescription());
-        Glide.with(holder.mImaeView).load(heritage.get(position).getAddress()).into(holder.mImaeView);
+        holder.mTitle.setText(heritage_fitered.get(position).getName());
+        holder.mDes.setText(heritage_fitered.get(position).getDescription());
+        Glide.with(holder.mImaeView).load(heritage_fitered.get(position).getAddress()).into(holder.mImaeView);
 
 //        holder.mImaeView.setImageResource(Glide.with(Activity_heritage.this).load(user.get(position).getAddress()));
 //        Glide.with().load(userList.get(2).getAddress()).into(iv);
@@ -48,11 +52,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
             @Override
             public void onItemClickListener(View view, int position) {
 
-                String gTitle = heritage.get(position).getName();
-                String gEra=heritage.get(position).getEra();
-                String gPlace = heritage.get(position).getPlace();
-                String gDesc = heritage.get(position).getDescription();
-                String gDetail=heritage.get(position).getDetail();
+                String gTitle = heritage_fitered.get(position).getName();
+                String gEra=heritage_fitered.get(position).getEra();
+                String gPlace = heritage_fitered.get(position).getPlace();
+                String gDesc = heritage_fitered.get(position).getDescription();
+                String gDetail=heritage_fitered.get(position).getDetail();
                 BitmapDrawable bitmapDrawable = (BitmapDrawable)holder.mImaeView.getDrawable();
 
 
@@ -80,6 +84,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public int getItemCount() {
-        return heritage.size();
+        return heritage_fitered.size();
+
+    }
+
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()){
+                    heritage_fitered = heritage_unfitered;
+                }else{
+                    ArrayList<Heritage> filteringList = new ArrayList<>();
+                    for (Heritage item : heritage_unfitered) {
+                        if (item.getName().toLowerCase().contains(charString.toLowerCase())){
+                            filteringList.add(item);
+                        }
+                    }
+                    heritage_fitered=filteringList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = heritage_fitered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                heritage_fitered=(ArrayList<Heritage>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
