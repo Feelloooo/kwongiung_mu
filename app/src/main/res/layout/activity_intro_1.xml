@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:background="@color/gray">
+        android:background="@color/gray_200">
 
         <ScrollView
         android:layout_width="match_parent"
@@ -19,22 +19,35 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:text="관장인사말"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:gravity="center"
+                    android:background="@drawable/sub_title_img"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="안녕하십니까?"
-                android:textSize="35sp"
-                android:textStyle="bold"
-                android:textColor="@color/purple_700"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="충북대학교 박물관을 방문해 주셔서 감사드리며 진심으로 환영합니다."
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="안녕하십니까?"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_700"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="충북대학교 박물관을 방문해 주셔서 감사드리며 진심으로 환영합니다."
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="3px"
@@ -53,7 +66,8 @@
 \n\n
 여러분의 애정과 관심을 기대합니다.\n\n"
                 android:textColor="@color/gray_500"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
+            </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

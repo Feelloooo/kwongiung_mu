@@ -27,6 +27,32 @@ public class Activity_intro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //조직및 업무
+        Button button3 = findViewById(R.id.button3); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Activity_intro_3.class);
+                startActivity(intent);
+            }
+        });
+        //관람안내
+        Button button4 = findViewById(R.id.button4); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Activity_intro_4.class);
+                startActivity(intent);
+            }
+        });
+        Button button5 = findViewById(R.id.button5); //다른 버튼 사용할 때 변수명 바꿔서 사용
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Activity_intro_5.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
