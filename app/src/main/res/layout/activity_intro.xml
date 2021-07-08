@@ -32,7 +32,7 @@
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_action_chevron_right"
         android:textColor="@color/gray_500"
-        android:text="박물관 연혁"
+        android:text="역대 관장"
         android:textSize="20sp"
         android:gravity="center_vertical"
         style="?android:attr/borderlessButtonStyle"
